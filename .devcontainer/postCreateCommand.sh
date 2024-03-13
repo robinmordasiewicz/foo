@@ -49,7 +49,7 @@ fi
 if ! [ -d ~/.vim/pack/plugin/start/vim-airline ]; then
   git clone https://github.com/vim-airline/vim-airline ~/.vim/pack/plugin/start/vim-airline
 else
-  cd ~/.vim/pack/plugin/start/vim-airline
+  cd ~/.vim/pack/plugin/start/vim-airline || return
   git pull
 fi
 
