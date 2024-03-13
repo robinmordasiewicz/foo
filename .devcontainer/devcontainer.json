@@ -1,5 +1,5 @@
 {
-  "name": "devops-toolkit",
+  "name": "devcontainer",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu22.04",
   "customizations": {
     "vscode": {
@@ -99,6 +99,6 @@
   "postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} ; ./.devcontainer/postCreateCommand.sh",
   "appPort": [],
   "containerEnv": {},
-  "runArgs": ["--name", "devops-toolkit"],
+  "runArgs": ["--name", "devcontainer"],
   "mounts": []
 }
