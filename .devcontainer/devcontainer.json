@@ -89,16 +89,20 @@
     "ghcr.io/jsburckhardt/devcontainer-features/gitleaks:1": {},
     "ghcr.io/jungaretti/features/make:1": {},
     "ghcr.io/lukewiwa/features/shellcheck:0": {},
+    "ghcr.io/mickeahlinder/devcontainer-features/tfenv:1": {},
     "ghcr.io/mikaello/devcontainer-features/modern-shell-utils:1": {},
     "ghcr.io/prulloac/devcontainer-features/pre-commit:1": {},
     "ghcr.io/schlich/devcontainer-features/powerlevel10k:1": {},
     "ghcr.io/stuartleeks/dev-container-features/azure-cli-persistence:0": {}
   },
-  "postStartCommand": ".devcontainer/postStartCommand.sh",
-  "postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} ; ./.devcontainer/postCreateCommand.sh",
+  "postStartCommand": "${containerWorkspaceFolder}/.devcontainer/postStartCommand.sh",
+  "postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} ; ${containerWorkspaceFolder}/.devcontainer/postCreateCommand.sh",
   "appPort": [],
   "containerEnv": {
     "PRE_COMMIT_ALLOW_NO_CONFIG": "1"
+  },
+  "remoteEnv": {
+    "PATH": "${localEnv:HOME}/.tfenv/tfenv-3.0.0/bin/:{containerEnv:PATH}",
   },
   "runArgs": ["--name", "devcontainer"],
   "mounts": []
