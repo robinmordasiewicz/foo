@@ -55,8 +55,8 @@ fi
 
 cp .devcontainer/.vimrc ~/
 
-if ! [ -f mkdocs.yml ]; then
-  cp .devcontainer/mkdocs.template ./mkdocs.yml
+if ! [ -f docs/mkdocs.yml ]; then
+  cp .devcontainer/mkdocs.template ./docs/mkdocs.yml
 fi
 
 FIRSTNAMELASTNAME=`git config --get user.name`
@@ -70,11 +70,17 @@ GITHUBPAGESURL="https://$GITHUBUSERNAME.github.io/$GITHUBREPOSITORYNAME/"
 GITHUBREPOSITORYAPIURL="https://api.github.com/repos/$GITHUBUSERNAME/$GITHUBREPOSITORYNAME"
 GITHUBREPOSITORYDESCRIPTION=$(curl -s "$GITHUBREPOSITORYAPIURL" | jq -r '.description')
 
-sed -i "s,GITHUBUSERNAME,${GITHUBUSERNAME},g" "mkdocs.yml"
-sed -i "s,FIRSTNAMELASTNAME,${FIRSTNAMELASTNAME},g" "mkdocs.yml"
-sed -i "s,GITHUBREPOSITORYNAME,${GITHUBREPOSITORYNAME},g" "mkdocs.yml"
-sed -i "s,GITHUBREPOSITORYCANONICALURL,${GITHUBREPOSITORYCANONICALURL},g" "mkdocs.yml"
-sed -i "s,GITHUBREPOSITORYDESCRIPTION,${GITHUBREPOSITORYDESCRIPTION},g" "mkdocs.yml"
-sed -i "s,GITHUBPAGESURL,${GITHUBPAGESURL},g" "mkdocs.yml"
+sed -i "s,GITHUBUSERNAME,${GITHUBUSERNAME},g" "docs/mkdocs.yml"
+sed -i "s,FIRSTNAMELASTNAME,${FIRSTNAMELASTNAME},g" "docs/mkdocs.yml"
+sed -i "s,GITHUBREPOSITORYNAME,${GITHUBREPOSITORYNAME},g" "docs/mkdocs.yml"
+sed -i "s,GITHUBREPOSITORYCANONICALURL,${GITHUBREPOSITORYCANONICALURL},g" "docs/mkdocs.yml"
+sed -i "s,GITHUBREPOSITORYDESCRIPTION,${GITHUBREPOSITORYDESCRIPTION},g" "docs/mkdocs.yml"
+sed -i "s,GITHUBPAGESURL,${GITHUBPAGESURL},g" "docs/mkdocs.yml"
 
-mkdocs gh-deploy
+conda init --all
+source /opt/conda/etc/profile.d/conda.sh
+conda env create -f ./.devcontainer/mkdocs.yml
+conda activate mkdocs
+mkdocs build --config-file docs/mkdocs.yml
+mkdocs gh-deploy --force
+
