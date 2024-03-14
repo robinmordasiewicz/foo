@@ -71,7 +71,6 @@
     },
     "ghcr.io/devcontainers-contrib/features/black:2": {},
     "ghcr.io/devcontainers-contrib/features/curl-apt-get:1": {},
-    "ghcr.io/devcontainers-contrib/features/devcontainers-cli:1": {},
     "ghcr.io/devcontainers-contrib/features/fzf:1": {},
     "ghcr.io/devcontainers-contrib/features/markdownlint-cli2:1": {},
     "ghcr.io/devcontainers-contrib/features/mkdocs:2": {},
@@ -98,7 +97,9 @@
   "postStartCommand": "",
   "postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} ; ./.devcontainer/postCreateCommand.sh",
   "appPort": [],
-  "containerEnv": {},
+  "containerEnv": {
+    "PRE_COMMIT_ALLOW_NO_CONFIG": "1"
+  },
   "runArgs": ["--name", "devcontainer"],
   "mounts": []
 }
