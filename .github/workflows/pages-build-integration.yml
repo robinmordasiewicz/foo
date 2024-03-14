@@ -8,10 +8,12 @@ on: # yamllint disable-line rule:truthy
       - main
     paths:
       - "docs/**"
-      - "mkdocs.yml"
-      - "requirements.txt"
       - "README.md"
       - ".github/workflows/pages-build-integration.yml"
+
+defaults:
+  run:
+    shell: "bash -l {0}"
 
 concurrency:
   group: "pages-build-integration"
@@ -21,6 +23,10 @@ permissions:
   contents: write
   pages: write
   id-token: write
+
+env:
+  MICROMAMBA_VERSION: 'latest'
+
 jobs:
   pages-build-integration:
     runs-on: ubuntu-latest
@@ -32,24 +38,21 @@ jobs:
       #  - name: Configure GitHub Pages
       #  uses: actions/configure-pages@f156874f8191504dae5b037505266ed5dda6c382
 
-      - uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c
+      - name: Install dependencies
+        uses: "mamba-org/setup-micromamba@v1"
         with:
-          python-version: 3.x
-
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
-          restore-keys: |
-            mkdocs-material-
+          micromamba-version: "${{ env.MICROMAMBA_VERSION }}"
+          environment-file: "docs/mkdocs-environment.yaml"
+          cache-environment: true
 
       - run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install .
 
-      - name: Build Docs
+      - name: Build site
+        run: mkdocs build --config-file docs/mkdocs.yml
+
+      - name: Deploy Docs
         env:
           MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.GITHUB_TOKEN }}
         run: mkdocs gh-deploy --force
+
