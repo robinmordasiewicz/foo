@@ -1,0 +1,35 @@
+.md-typeset .admonition,
+.md-typeset details {
+  border-width: 0;
+  border-left-width: 4px;
+}
+.md-grid {
+  margin-left: 0;
+  max-width: 75rem;
+}
+
+.md-typeset h1 {
+    line-height: 1;
+    margin: 0;
+}
+
+*, ::after, ::before {
+  box-sizing: unset;
+}
+/* stylelint-disable selector-class-pattern */
+.md-main__inner {
+    margin-top: 0;
+}
+
+.md-sidebar--secondary {
+  display: none;
+  width: 20px;
+}
+/* stylelint-enable selector-class-pattern */
+.md-sidebar {
+  width:10rem
+}
+
+.md-content {
+  min-width: 80%;
+}

@@ -1,6 +1,6 @@
 syntax on
 
-colo darkblue
+" colo darkblue
 
 " Configuration vim Airline
 set laststatus=2

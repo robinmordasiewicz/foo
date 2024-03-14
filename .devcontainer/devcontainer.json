@@ -94,7 +94,7 @@
     "ghcr.io/schlich/devcontainer-features/powerlevel10k:1": {},
     "ghcr.io/stuartleeks/dev-container-features/azure-cli-persistence:0": {}
   },
-  "postStartCommand": "",
+  "postStartCommand": ".devcontainer/postStartCommand.sh",
   "postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} ; ./.devcontainer/postCreateCommand.sh",
   "appPort": [],
   "containerEnv": {
