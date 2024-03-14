@@ -79,7 +79,7 @@ sed -i "s,GITHUBPAGESURL,${GITHUBPAGESURL},g" "docs/mkdocs.yml"
 
 conda init --all
 source /opt/conda/etc/profile.d/conda.sh
+#yes y | conda update -n base -c conda-forge conda
 conda env create -f ./docs/mkdocs-environment.yml
 conda activate mkdocs
-mkdocs build --config-file docs/mkdocs.yml
-mkdocs gh-deploy --force
+cd docs && mkdocs build && mkdocs gh-deploy --force

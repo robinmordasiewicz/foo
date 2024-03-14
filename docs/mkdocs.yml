@@ -1,12 +1,14 @@
 ---
-site_name: GITHUBREPOSITORYNAME
+site_name: devcontainer
 site_description: >-
-  GITHUBREPOSITORYDESCRIPTION
-site_url: GITHUBPAGESURL
-site_author: FIRSTNAMELASTNAME
+  DevContainer Template Repository
+site_url: https://robinmordasiewicz.github.io/devcontainer/
+site_author: 
+docs_dir: .
+site_dir: ../site
 
-repo_name: GITHUBUSERNAME/GITHUBREPOSITORYNAME
-repo_url: GITHUBREPOSITORYCANONICALURL
+repo_name: robinmordasiewicz/devcontainer
+repo_url: https://github.com/robinmordasiewicz/devcontainer
 edit_uri: edit/main/docs/
 
 # yamllint disable-line rule:line-length
@@ -35,7 +37,7 @@ extra_css: [extra.css]
 
 theme:
   name: material
-  custom_dir: docs/overrides
+  custom_dir: overrides
   include_sidebar: false
   logo: logo.svg
   favicon: favicon.ico
@@ -109,8 +111,8 @@ markdown_extensions:
   - pymdownx.magiclink:
       normalize_issue_symbols: true
       repo_url_shorthand: true
-      user: GITHUBUSERNAME
-      repo: GITHUBREPOSITORYNAME
+      user: robinmordasiewicz
+      repo: devcontainer
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.tasklist:
@@ -122,6 +124,7 @@ markdown_extensions:
         kwds:
 
 plugins:
+  - same-dir
   - glightbox
   - blog:
       blog_dir: concepts

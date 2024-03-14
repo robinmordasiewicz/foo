@@ -15,6 +15,7 @@ dependencies:
     - mkdocs-minify-plugin
     - mkdocs-monorepo-plugin
     - mkdocs-pdf-export-plugin
+    - mkdocs-same-dir
     - mkdocstrings[crystal,python]
     - mkdocs-with-pdf
     - pymdown-extensions
