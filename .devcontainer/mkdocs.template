@@ -1,12 +1,12 @@
 ---
-site_name: devcontainer
+site_name: GITHUBREPOSITORYNAME
 site_description: >-
-  DevContainer Template Repository
-site_url: https://robinmordasiewicz.github.io/devcontainer/
-site_author: Robin Mordasiewicz
+  GITHUBREPOSITORYDESCRIPTION
+site_url: GITHUBPAGESURL
+site_author: FIRSTNAMELASTNAME
 
-repo_name: robinmordasiewicz/devcontainer
-repo_url: https://github.com/robinmordasiewicz/devcontainer
+repo_name: GITHUBUSERNAME/GITHUBREPOSITORYNAME
+repo_url: GITHUBREPOSITORYCANONICALURL
 edit_uri: edit/main/docs/
 
 # yamllint disable-line rule:line-length
@@ -109,8 +109,8 @@ markdown_extensions:
   - pymdownx.magiclink:
       normalize_issue_symbols: true
       repo_url_shorthand: true
-      user: robinmordasiewicz
-      repo: devcontainer
+      user: GITHUBUSERNAME
+      repo: GITHUBREPOSITORYNAME
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.tasklist:
