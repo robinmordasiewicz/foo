@@ -24,9 +24,6 @@ permissions:
   pages: write
   id-token: write
 
-env:
-  MICROMAMBA_VERSION: "latest"
-
 jobs:
   pages-build-integration:
     runs-on: ubuntu-latest
@@ -43,9 +40,9 @@ jobs:
           enablement: true
 
       - name: Install dependencies
-        uses: "mamba-org/setup-micromamba@v1"
+        uses: mamba-org/setup-micromamba@422500192359a097648154e8db4e39bdb6c6eed7
         with:
-          micromamba-version: "${{ env.MICROMAMBA_VERSION }}"
+          micromamba-version: "latest"
           environment-file: "docs/mkdocs-environment.yml"
           init-shell: bash
           cache-environment: true
@@ -54,9 +51,28 @@ jobs:
         run: mkdocs build
         shell: bash -el {0}
 
-      - name: Deploy Docs
-        env:
-          MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.GITHUB_TOKEN }}
-        run: mkdocs gh-deploy --force -v
-        shell: bash -el {0}
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa
+        with:
+          path: site
+
+#      - name: Deploy Docs
+#        env:
+#          MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.GITHUB_TOKEN }}
+#        run: mkdocs gh-deploy --force -v
+#        shell: bash -el {0}
+
+pages-build-deployment:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: pages-build-integration
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@decdde0ac072f6dcbe43649d82d9c635fff5b4e4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
 
