@@ -12,9 +12,13 @@
         "ms-azuretools.vscode-docker",
         "MS-CST-E.vscode-devskim",
         "ms-python.python",
+        "ms-python.vscode-pylance",
         "ms-vscode.azure-account",
         "ms-azuretools.vscode-azureterraform",
-        "alphaxek.github-actions-locally"
+        "alphaxek.github-actions-locally",
+        "amazonwebservices.aws-toolkit-vscode",
+        "github.vscode-github-actions",
+        "OmarTawfik.github-actions-vscode"
       ],
       "settings": {
         "terminal.integrated.profiles.linux": {
@@ -79,11 +83,12 @@
     "ghcr.io/devcontainers-contrib/features/wget-apt-get:1": {},
     "ghcr.io/devcontainers-contrib/features/yamllint:2": {},
     "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
-      "plugins": "zsh-syntax-highlighting zsh-autosuggestions ubuntu jsontools gh common-aliases zsh-eza zsh-tfenv",
-      "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions.git https://github.com/zsh-users/zsh-syntax-highlighting.git https://github.com/z-shell/zsh-eza.git https://github.com/cda0/zsh-tfenv.git"
+      "plugins": "zsh-syntax-highlighting zsh-autosuggestions ubuntu jsontools gh common-aliases zsh-eza zsh-tfenv conda-zsh-completion",
+      "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions.git https://github.com/zsh-users/zsh-syntax-highlighting.git https://github.com/z-shell/zsh-eza.git https://github.com/cda0/zsh-tfenv.git https://github.com/conda-incubator/conda-zsh-completion.git"
     },
     "ghcr.io/devcontainers-community/npm-features/prettier:1": {},
     "ghcr.io/guiyomh/features/vim:0": {},
+    "ghcr.io/hwaien/devcontainer-features/match-host-time-zone": {},
     "ghcr.io/joshuanianji/devcontainer-features/github-cli-persistence:1": {},
     "ghcr.io/jsburckhardt/devcontainer-features/gitleaks:1": {},
     "ghcr.io/jungaretti/features/make:1": {},

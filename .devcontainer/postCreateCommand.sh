@@ -86,3 +86,12 @@ conda activate mkdocs
 echo "-P ubuntu-latest=catthehacker/ubuntu:act-latest" > ~/.act
 echo '-s GITHUB_TOKEN="$(gh auth token)"' >> ~/.act
 
+curl -s https://ohmyposh.dev/install.sh | sudo bash -s
+oh-my-posh font install Meslo
+
+if ! [ -d ~/.oh-my-posh/themes/ ]; then
+  mkdir -p ~/.oh-my-posh/themes
+fi
+
+wget https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/powerlevel10k_rainbow.omp.json -O ~/.oh-my-posh/themes/powerlevel10k_rainbow.omp.json
+echo 'eval "$(oh-my-posh init zsh --config ~/.oh-my-posh/themes/powerlevel10k_rainbow.omp.json)"' >> ~/.zshrc

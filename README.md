@@ -4,7 +4,15 @@
 
 https://code.visualstudio.com/docs/devcontainers/containers
 
-For best results install fonts
+## Fonts
+
+For best results install Nerd fonts in VSCode:
+
+1. Open VSCode Settings
+
+2. Search for "terminal.integrated.fontFamily"
+
+3.
 
 ## mkdocs
 
@@ -17,4 +25,3 @@ tfenv install latest
 ## Github CLI
 
 gh auth login
-
