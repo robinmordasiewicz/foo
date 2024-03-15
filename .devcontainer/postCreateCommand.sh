@@ -55,6 +55,17 @@ fi
 
 cp .devcontainer/.vimrc ~/
 
+if ! [ -d ~/.vim/pack/themes/start ]; then
+  mkdir -p ~/.vim/pack/themes/start
+fi
+
+if ! [ -d ~/.vim/pack/themes/start/vim-code-dark ]; then
+  git clone https://github.com/tomasiser/vim-airline ~/.vim/pack/themes/start/vim-code-dark
+else
+  cd ~/.vim/pack/themes/start/vim-code-dark || return
+  git pull
+fi
+
 if ! [ -f mkdocs.yml ]; then
   cp .devcontainer/mkdocs.template ./mkdocs.yml
 fi
