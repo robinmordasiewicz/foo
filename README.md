@@ -18,6 +18,3 @@ tfenv install latest
 
 gh auth login
 
-## Act
-
-act -s GITHUB_TOKEN="$(gh auth token)"
