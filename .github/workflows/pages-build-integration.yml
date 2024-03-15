@@ -52,8 +52,24 @@ jobs:
         run: mkdocs build
         shell: bash -el {0}
 
-      - name: Deploy Docs
-        env:
-          MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.GITHUB_TOKEN }}
-        run: mkdocs gh-deploy --force
-        shell: bash -el {0}
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+
+     # - name: Deploy Docs
+     #   env:
+     #     MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.GITHUB_TOKEN }}
+     #   run: mkdocs gh-deploy --force
+     #   shell: bash -el {0}
+
+  pages-build-deployment:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: pages-build-integration
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
