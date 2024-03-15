@@ -42,6 +42,8 @@ pre-commit install
 az config set auto-upgrade.enable=yes
 wget https://raw.githubusercontent.com/Azure/azure-cli/dev/az.completion -O ~/.oh-my-zsh/custom/az.zsh
 
+cp .devcontainer/.vimrc ~/
+
 if ! [ -d ~/.vim/pack/plugin/start ]; then
   mkdir -p ~/.vim/pack/plugin/start
 fi
@@ -53,14 +55,12 @@ else
   git pull
 fi
 
-cp .devcontainer/.vimrc ~/
-
 if ! [ -d ~/.vim/pack/themes/start ]; then
   mkdir -p ~/.vim/pack/themes/start
 fi
 
 if ! [ -d ~/.vim/pack/themes/start/vim-code-dark ]; then
-  git clone https://github.com/tomasiser/vim-airline ~/.vim/pack/themes/start/vim-code-dark
+  git clone https://github.com/tomasiser/vim-code-dark ~/.vim/pack/themes/start/vim-code-dark
 else
   cd ~/.vim/pack/themes/start/vim-code-dark || return
   git pull
