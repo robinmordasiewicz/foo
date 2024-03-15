@@ -39,6 +39,7 @@ jobs:
         id: pages
         uses: actions/configure-pages@1f0c5cde4bc74cd7e1254d0cb4de8d49e9068c7d
         with: 
+          token: ${{ secrets.GITHUB_TOKEN }}
           enablement: true
 
       - name: Install dependencies
