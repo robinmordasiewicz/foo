@@ -25,7 +25,7 @@ permissions:
   id-token: write
 
 env:
-  MICROMAMBA_VERSION: 'latest'
+  MICROMAMBA_VERSION: "latest"
 
 jobs:
   pages-build-integration:
@@ -35,24 +35,25 @@ jobs:
         with:
           fetch-depth: 0
 
-      #  - name: Configure GitHub Pages
-      #  uses: actions/configure-pages@f156874f8191504dae5b037505266ed5dda6c382
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@f156874f8191504dae5b037505266ed5dda6c382
 
       - name: Install dependencies
         uses: "mamba-org/setup-micromamba@v1"
         with:
           micromamba-version: "${{ env.MICROMAMBA_VERSION }}"
           environment-file: "docs/mkdocs-environment.yml"
+          init-shell: bash
           cache-environment: true
-
-      - run: |
-          pip install .
+          post-cleanup: "all"
 
       - name: Build site
-        run: mkdocs build --config-file docs/mkdocs.yml
+        run: mkdocs build
+        shell: bash -el {0}
 
       - name: Deploy Docs
         env:
           MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.GITHUB_TOKEN }}
         run: mkdocs gh-deploy --force
-
+        shell: bash -el {0}

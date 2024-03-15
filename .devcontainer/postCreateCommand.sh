@@ -82,4 +82,7 @@ source /opt/conda/etc/profile.d/conda.sh
 #yes y | conda update -n base -c conda-forge conda
 conda env create -f ./docs/mkdocs-environment.yml
 conda activate mkdocs
-cd docs && mkdocs build && mkdocs gh-deploy --force
+
+echo "-P ubuntu-latest=catthehacker/ubuntu:act-latest" > ~/.act
+echo '-s GITHUB_TOKEN="$(gh auth token)"' >> ~/.act
+

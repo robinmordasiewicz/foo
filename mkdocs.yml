@@ -4,8 +4,8 @@ site_description: >-
   DevContainer Template Repository
 site_url: https://robinmordasiewicz.github.io/devcontainer/
 site_author: 
-docs_dir: .
-site_dir: ../site
+docs_dir: docs/
+site_dir: site/
 
 repo_name: robinmordasiewicz/devcontainer
 repo_url: https://github.com/robinmordasiewicz/devcontainer
@@ -37,7 +37,7 @@ extra_css: [extra.css]
 
 theme:
   name: material
-  custom_dir: overrides
+  custom_dir: docs/overrides
   include_sidebar: false
   logo: logo.svg
   favicon: favicon.ico
@@ -124,13 +124,12 @@ markdown_extensions:
         kwds:
 
 plugins:
-  - same-dir
   - glightbox
-  - blog:
-      blog_dir: concepts
-      post_dir: "{blog}/articles"
-      post_readtime: false
-      archive: false
-      authors: false
   - search:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+#  - blog:
+#      blog_dir: concepts
+#      post_dir: "{blog}/articles"
+#      post_readtime: false
+#      archive: false
+#      authors: false
