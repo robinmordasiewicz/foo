@@ -35,7 +35,7 @@ jobs:
       - name: Configure GitHub Pages
         id: pages
         uses: actions/configure-pages@1f0c5cde4bc74cd7e1254d0cb4de8d49e9068c7d
-        with: 
+        with:
           token: ${{ secrets.GITHUB_TOKEN }}
           enablement: true
 
@@ -62,7 +62,7 @@ jobs:
 #        run: mkdocs gh-deploy --force -v
 #        shell: bash -el {0}
 
-pages-build-deployment:
+  pages-build-deployment:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -74,5 +74,3 @@ pages-build-deployment:
         uses: actions/deploy-pages@decdde0ac072f6dcbe43649d82d9c635fff5b4e4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-
-
