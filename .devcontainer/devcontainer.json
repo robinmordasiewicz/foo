@@ -51,12 +51,6 @@
     },
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/nvidia-cuda:1": {
-      "installCudnn": true,
-      "installCudnnDev": true,
-      "installNvtx": true,
-      "installToolkit": true
-    },
     "ghcr.io/devcontainers/features/python:1": {
       "installTools": true,
       "version": "3.11"
@@ -98,7 +92,6 @@
     "ghcr.io/jungaretti/features/make:1": {},
     "ghcr.io/lukewiwa/features/shellcheck:0": {},
     "ghcr.io/mikaello/devcontainer-features/modern-shell-utils:1": {},
-    "ghcr.io/prulloac/devcontainer-features/ollama:1": {},
     "ghcr.io/prulloac/devcontainer-features/pre-commit:1": {},
     "ghcr.io/rocker-org/devcontainer-features/miniforge:1": {},
     "ghcr.io/stuartleeks/dev-container-features/azure-cli-persistence:0": {},
@@ -115,7 +108,8 @@
   ],
   "containerEnv": {
 	  "PORT": "11434",
-    "OCO_AI_PROVIDER": "ollama"
+    "OCO_AI_PROVIDER": "ollama",
+    "OLLAMA_HOST": "0.0.0.0"
   },
   "runArgs": [ "--name", "devcontainer", "--gpus=all"],
   "mounts": [
