@@ -15,12 +15,11 @@ rm -rf /tmp/lsd.deb
 if ! [ -d ~/.local/bin ]; then
   mkdir -p ~/.local/bin
 fi
-curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
-oh-my-posh font install Meslo
-
 if ! [ -d ~/.oh-my-posh/themes/ ]; then
   mkdir -p ~/.oh-my-posh/themes
 fi
+curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin -t ~/.oh-my-posh/themes
+oh-my-posh font install Meslo
 wget https://raw.githubusercontent.com/robinmordasiewicz/dotfiles/main/powerlevel10k.omp.json -O ~/.oh-my-posh/themes/powerlevel10k.omp.json
 echo 'eval "$(oh-my-posh init zsh --config ~/.oh-my-posh/themes/powerlevel10k.omp.json)"' >> ~/.zshrc
 conda init --all

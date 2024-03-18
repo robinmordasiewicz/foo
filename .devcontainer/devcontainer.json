@@ -98,7 +98,7 @@
     "ghcr.io/warrenbuckley/codespace-features/sqlite:1": {}
   },
   "postStartCommand": "./.devcontainer/postStartCommand.sh",
-  "postCreateCommand": "sudo chown -R vscode:vscode ${containerWorkspaceFolder} && git config --global --add safe.directory ${containerWorkspaceFolder} && ./.devcontainer/postCreateCommand.sh",
+  "postCreateCommand": "sudo chown -R vscode:vscode ${containerWorkspaceFolder} ; git config --global --add safe.directory ${containerWorkspaceFolder} && ./.devcontainer/postCreateCommand.sh",
   "appPort": [
     "8081:8081",
   ],
