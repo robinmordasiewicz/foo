@@ -8,9 +8,9 @@ https://code.visualstudio.com/docs/devcontainers/containers
 
 For best results install Nerd fonts in VSCode:
 
-\*. Mac brew tap homebrew/cask-fonts && brew install --cask font-meslo-lg-nerd-font
+* Mac brew tap homebrew/cask-fonts && brew install --cask font-meslo-lg-nerd-font
 
-\*. Windows - Google it
+* Windows - Google it
 
 1. Open VSCode Settings
 
