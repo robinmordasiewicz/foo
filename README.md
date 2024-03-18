@@ -33,3 +33,7 @@ gh auth login
 ## Ollama on Mac
 
 https://nonsequiturs.com/posts/run-ollama-in-the-menu-bar-on-macos-with-custom-host-bindings/?s=%23YOUREWELCOME
+
+## Troubleshooting docker
+
+docker system prune -a -f
