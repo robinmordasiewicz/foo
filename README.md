@@ -48,4 +48,8 @@ tell application "Ollama" to run
 
 ## Troubleshooting docker
 
+to free up space run
+
+```bash
 docker system prune -a -f
+```
