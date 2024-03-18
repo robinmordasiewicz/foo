@@ -4,6 +4,7 @@
 REPODIR=`pwd`
 
 sudo sh -c 'echo "vscode ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/vscode'
+
 sudo chown -R vscode:vscode /home/vscode/
 sudo chown -R vscode:vscode /dc
 
@@ -11,7 +12,10 @@ wget https://github.com/lsd-rs/lsd/releases/download/v1.0.0/lsd_1.0.0_`dpkg-arch
 sudo apt-get install /tmp/lsd.deb
 rm -rf /tmp/lsd.deb
 
-curl -s https://ohmyposh.dev/install.sh | sudo bash -s
+if ! [ -d ~/.local/bin ]; then
+  mkdir -p ~/.local/bin
+fi
+curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
 oh-my-posh font install Meslo
 
 if ! [ -d ~/.oh-my-posh/themes/ ]; then
@@ -73,7 +77,7 @@ sed -i "s,GITHUBREPOSITORYDESCRIPTION,${GITHUBREPOSITORYDESCRIPTION},g" "mkdocs.
 sed -i "s,GITHUBPAGESURL,${GITHUBPAGESURL},g" "mkdocs.yml"
 
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_`dpkg-architecture -q DEB_BUILD_ARCH`.tar.gz"
 tar xf lazygit.tar.gz lazygit
 rm lazygit.tar.gz
 sudo install lazygit /usr/local/bin
@@ -84,7 +88,8 @@ cd ${REPODIR} && pre-commit install --allow-missing-config
 sudo -H env PATH=$PATH npm install -g npm@latest
 sudo env PATH=$PATH npm install -g opencommit
 echo "OCO_AI_PROVIDER=ollama" > ~/.opencommit
-sudo -H env PATH="${PATH}" oco hook set
+git config --global --add safe.directory /workspaces/devcontainer
+cd ${REPODIR} && oco hook set
 
 if command -v az &> /dev/null; then
     yes y | az config set auto-upgrade.enable=yes
@@ -95,11 +100,9 @@ sudo apt update
 sudo apt-get -y upgrade
 sudo apt -y autoremove
 
-yes y | conda update -n base -c defaults conda
 yes y | conda update -n base -c conda-forge conda
 yes y | conda update --all
-yes y | conda update -n base -c defaults conda --repodata-fn=repodata.json
-yes y | conda update -n base -c conda-forge --repodata-fn=repodata.json
+yes y | conda update -n base -c conda-forge conda --repodata-fn=repodata.json
 
 source /opt/conda/etc/profile.d/conda.sh
 
