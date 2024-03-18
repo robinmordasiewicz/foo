@@ -101,7 +101,6 @@
   "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
   "appPort": [
     "8081:8081",
-    "11434:11434"
   ],
   "containerEnv": {
 	  "PORT": "11434",
