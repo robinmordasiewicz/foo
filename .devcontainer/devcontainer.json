@@ -1,5 +1,5 @@
 {
-  "name": "llm-prompt",
+  "name": "devcontainer",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu22.04",
   "customizations": {
     "vscode": {
@@ -97,9 +97,6 @@
     "ghcr.io/stuartleeks/dev-container-features/azure-cli-persistence:0": {},
     "ghcr.io/warrenbuckley/codespace-features/sqlite:1": {}
   },
-  "hostRequirements": {
-    "gpu": true
-  },
   "postStartCommand": "./.devcontainer/postStartCommand.sh",
   "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
   "appPort": [
@@ -111,7 +108,7 @@
     "OCO_AI_PROVIDER": "ollama",
     "OLLAMA_HOST": "0.0.0.0"
   },
-  "runArgs": [ "--name", "devcontainer", "--gpus=all"],
+  "runArgs": [ "--name", "devcontainer"],
   "mounts": [
   ]
 }
