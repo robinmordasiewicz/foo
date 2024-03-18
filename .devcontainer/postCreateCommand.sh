@@ -1,6 +1,8 @@
 #!/bin/bash
 #
 
+REPODIR=`pwd`
+
 sudo sh -c 'echo "vscode ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/vscode'
 sudo chown -R vscode:vscode /home/vscode/
 sudo chown -R vscode:vscode /dc
@@ -77,13 +79,12 @@ rm lazygit.tar.gz
 sudo install lazygit /usr/local/bin
 rm lazygit
 
-pre-commit install --allow-missing-config
+cd ${REPODIR} && pre-commit install --allow-missing-config
 
 sudo -H env PATH=$PATH npm install -g npm@latest
 sudo env PATH=$PATH npm install -g opencommit
 echo "OCO_AI_PROVIDER=ollama" > ~/.opencommit
 sudo -H env PATH="${PATH}" oco hook set
-
 
 if command -v az &> /dev/null; then
     yes y | az config set auto-upgrade.enable=yes
@@ -95,8 +96,10 @@ sudo apt-get -y upgrade
 sudo apt -y autoremove
 
 yes y | conda update -n base -c defaults conda
+yes y | conda update -n base -c conda-forge conda
 yes y | conda update --all
 yes y | conda update -n base -c defaults conda --repodata-fn=repodata.json
+yes y | conda update -n base -c conda-forge --repodata-fn=repodata.json
 
 source /opt/conda/etc/profile.d/conda.sh
 
