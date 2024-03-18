@@ -39,7 +39,7 @@ conda env create -f ./.devcontainer/jupyterlab.yml
 conda env create -f ./.devcontainer/chunking.yml
 conda env create -f ./docs/mkdocs-environment.yml
 
-pre-commit install
+pre-commit install --allow-missing-config
 
 curl -s https://ohmyposh.dev/install.sh | sudo bash -s
 oh-my-posh font install Meslo
