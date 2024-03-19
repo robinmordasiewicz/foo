@@ -32,8 +32,8 @@
           }
         },
         "terminal.integrated.defaultProfile.linux": "zsh",
-		    "files.eol": "\n",
-		    "files.insertFinalNewline": true,
+        "files.eol": "\n",
+        "files.insertFinalNewline": true,
         "files.trimFinalNewlines": true,
         "files.trimTrailingWhitespace": true,
         "editor.formatOnSave": true,
@@ -63,7 +63,20 @@
     "ghcr.io/devcontainers-contrib/features/actionlint:1": {},
     "ghcr.io/devcontainers-contrib/features/ansible:2": {},
     "ghcr.io/devcontainers-contrib/features/apt-packages:1": {
-        "packages": ["software-properties-common", "iputils-ping", "cmake", "libpoppler-cpp-dev", "libsecret-1-dev", "yelp-tools", "libyelp-dev", "libgif-dev", "autoconf", "tesseract-ocr", "ubuntu-drivers-common", "nodejs"]
+      "packages": [
+        "software-properties-common",
+        "iputils-ping",
+        "cmake",
+        "libpoppler-cpp-dev",
+        "libsecret-1-dev",
+        "yelp-tools",
+        "libyelp-dev",
+        "libgif-dev",
+        "autoconf",
+        "tesseract-ocr",
+        "ubuntu-drivers-common",
+        "nodejs"
+      ]
     },
     "ghcr.io/devcontainers-contrib/features/black:2": {},
     "ghcr.io/devcontainers-contrib/features/curl-apt-get:1": {},
@@ -99,11 +112,8 @@
   },
   "postStartCommand": "./.devcontainer/postStartCommand.sh",
   "postCreateCommand": "sudo chown -R vscode:vscode ${containerWorkspaceFolder} ; git config --global --add safe.directory ${containerWorkspaceFolder} && ./.devcontainer/postCreateCommand.sh",
-  "appPort": [
-    "8081:8081",
-  ],
+  "appPort": ["8081:8081"],
   "containerEnv": {},
-  "runArgs": [ "--name", "devcontainer"],
-  "mounts": [
-  ]
+  "runArgs": ["--name", "devcontainer"],
+  "mounts": []
 }
