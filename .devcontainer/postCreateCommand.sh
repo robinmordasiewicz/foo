@@ -23,6 +23,12 @@ oh-my-posh font install Meslo
 wget https://raw.githubusercontent.com/robinmordasiewicz/dotfiles/main/powerlevel10k.omp.json -O ~/.oh-my-posh/themes/powerlevel10k.omp.json
 # shellcheck disable=SC2016
 echo 'eval "$(oh-my-posh init zsh --config ~/.oh-my-posh/themes/powerlevel10k.omp.json)"' >>~/.zshrc
+if ! [ -d ~/.z ]; then
+	git clone https://github.com/rupa/z.git ~/.z
+else
+	cd ~/.z || return
+	git pull
+fi
 
 conda init --all
 wget https://raw.githubusercontent.com/Azure/azure-cli/dev/az.completion -O ~/.oh-my-zsh/custom/az.zsh
