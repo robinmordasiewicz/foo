@@ -37,6 +37,7 @@
         "ms-azuretools.vscode-cosmosdb",
         "ms-azuretools.vscode-azureappservice",
         "ms-vscode.vscode-node-azure-pack",
+        "ms-vscode.powershell",
         "ms-toolsai.vscode-ai",
         "ms-azure-devops.azure-pipelines",
         "msazurermtools.azurerm-vscode-tools",
@@ -51,6 +52,9 @@
           },
           "zsh": {
             "path": "/usr/bin/zsh"
+          },
+          "pwsh": {
+            "path": "/opt/microsoft/powershell/7/pwsh"
           }
         },
         "terminal.integrated.defaultProfile.linux": "zsh",
@@ -73,7 +77,10 @@
     },
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/powershell:1": {},
+    "ghcr.io/devcontainers/features/powershell:1": {
+      "modules": "Terminal-Icons",
+      "powershellProfileURL": "https://raw.githubusercontent.com/robinmordasiewicz/dotfiles/main/Microsoft.PowerShell_profile.ps1"
+    },
     "ghcr.io/devcontainers/features/python:1": {
       "installTools": true,
       "version": "3.11"
@@ -117,7 +124,7 @@
     "ghcr.io/devcontainers-contrib/features/yamllint:2": {},
     "ghcr.io/devcontainers-contrib/features/yt-dlp:2": {},
     "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
-      "plugins": "zsh-syntax-highlighting zsh-autosuggestions ubuntu jsontools gh common-aliases zsh-aliases-lsd zsh-tfenv conda-zsh-completion",
+      "plugins": "zsh-syntax-highlighting zsh-autosuggestions ubuntu jsontools gh common-aliases zsh-aliases-lsd zsh-tfenv conda-zsh-completion z",
       "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions.git https://github.com/zsh-users/zsh-syntax-highlighting.git https://github.com/conda-incubator/conda-zsh-completion.git https://github.com/z-shell/zsh-eza.git https://github.com/cda0/zsh-tfenv.git https://github.com/yuhonas/zsh-aliases-lsd.git"
     },
     "ghcr.io/devcontainers-community/npm-features/prettier:1": {},
