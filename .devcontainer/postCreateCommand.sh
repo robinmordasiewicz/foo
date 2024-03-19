@@ -28,6 +28,8 @@ if ! [ -f ~/.z ]; then
 fi
 
 conda init --all
+conda config --set changeps1 False
+
 wget https://raw.githubusercontent.com/Azure/azure-cli/dev/az.completion -O ~/.oh-my-zsh/custom/az.zsh
 
 if ! [ -d ~/.vim/pack/plugin/start ]; then
